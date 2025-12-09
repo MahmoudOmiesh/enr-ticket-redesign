@@ -2,7 +2,6 @@ import * as React from "react";
 import {
   Search,
   ChevronDownIcon,
-  AlertCircleIcon,
   TrainFront,
   Clock,
   ArrowRight,
@@ -47,7 +46,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
@@ -242,135 +240,123 @@ export function BookTickets() {
   };
 
   return (
-    <div className="h-full px-4 py-8 flex flex-col gap-12 items-center">
-      {/* Warning / Alert Banner */}
-      <Alert variant="destructive" className="max-w-2xl">
-        <AlertCircleIcon className="h-4 w-4" />
-        <AlertTitle>Ticket Reservation Policy</AlertTitle>
-        <AlertDescription>
-          Online reservation is currently available for Egyptian nationality
-          only. Ticket prices do not include additional services.
-        </AlertDescription>
-      </Alert>
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 max-w-7xl mx-auto">
+      {/* Booking Form Card */}
+      <Card className="gap-8 h-fit">
+        <CardHeader>
+          <CardTitle>Book a Ticket</CardTitle>
+          <CardDescription>
+            Select your destination and travel dates
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Tabs defaultValue="oneway" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 mb-2">
+              <TabsTrigger value="oneway">One Way</TabsTrigger>
+              <TabsTrigger value="roundtrip">Round Trip</TabsTrigger>
+            </TabsList>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 max-w-7xl w-full">
-        {/* Booking Form Card */}
-        <Card className="gap-8 h-fit">
-          <CardHeader>
-            <CardTitle>Book a Ticket</CardTitle>
-            <CardDescription>
-              Select your destination and travel dates
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Tabs defaultValue="oneway" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 mb-2">
-                <TabsTrigger value="oneway">One Way</TabsTrigger>
-                <TabsTrigger value="roundtrip">Round Trip</TabsTrigger>
-              </TabsList>
+            <TabsContent value="oneway" className="space-y-4">
+              <div className="space-y-2">
+                <Label>Departure Station</Label>
+                <Select>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select departure" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="cairo">Cairo</SelectItem>
+                    <SelectItem value="alex">Alexandria</SelectItem>
+                    <SelectItem value="aswan">Aswan</SelectItem>
+                    <SelectItem value="luxor">Luxor</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-              <TabsContent value="oneway" className="space-y-4">
+              <div className="space-y-2">
+                <Label>Arrival Station</Label>
+                <Select>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select arrival" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="cairo">Cairo</SelectItem>
+                    <SelectItem value="alex">Alexandria</SelectItem>
+                    <SelectItem value="aswan">Aswan</SelectItem>
+                    <SelectItem value="luxor">Luxor</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label>Departure Date</Label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      id="date"
+                      className="w-full justify-between font-normal"
+                    >
+                      {date ? date.toLocaleDateString() : "Select date"}
+                      <ChevronDownIcon className="h-4 w-4 opacity-50" />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={date}
+                      className="rounded-md border"
+                      onSelect={(date) => {
+                        setDate(date);
+                      }}
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
                 <div className="space-y-2">
-                  <Label>Departure Station</Label>
+                  <Label>Class</Label>
                   <Select>
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select departure" />
+                      <SelectValue placeholder="Any" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="cairo">Cairo</SelectItem>
-                      <SelectItem value="alex">Alexandria</SelectItem>
-                      <SelectItem value="aswan">Aswan</SelectItem>
-                      <SelectItem value="luxor">Luxor</SelectItem>
+                      <SelectItem value="ac1">AC 1st Class</SelectItem>
+                      <SelectItem value="ac2">AC 2nd Class</SelectItem>
+                      <SelectItem value="vip">VIP</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-
                 <div className="space-y-2">
-                  <Label>Arrival Station</Label>
-                  <Select>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select arrival" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="cairo">Cairo</SelectItem>
-                      <SelectItem value="alex">Alexandria</SelectItem>
-                      <SelectItem value="aswan">Aswan</SelectItem>
-                      <SelectItem value="luxor">Luxor</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <Label>Train No.</Label>
+                  <Input placeholder="Optional" />
                 </div>
+              </div>
+            </TabsContent>
 
-                <div className="space-y-2">
-                  <Label>Departure Date</Label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="outline"
-                        id="date"
-                        className="w-full justify-between font-normal"
-                      >
-                        {date ? date.toLocaleDateString() : "Select date"}
-                        <ChevronDownIcon className="h-4 w-4 opacity-50" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={date}
-                        className="rounded-md border"
-                        onSelect={(date) => {
-                          setDate(date);
-                        }}
-                      />
-                    </PopoverContent>
-                  </Popover>
-                </div>
+            <TabsContent value="roundtrip">
+              <div className="py-8 text-center text-muted-foreground">
+                Round trip selection coming soon.
+              </div>
+            </TabsContent>
+          </Tabs>
+        </CardContent>
 
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="space-y-2">
-                    <Label>Class</Label>
-                    <Select>
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Any" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="ac1">AC 1st Class</SelectItem>
-                        <SelectItem value="ac2">AC 2nd Class</SelectItem>
-                        <SelectItem value="vip">VIP</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label>Train No.</Label>
-                    <Input placeholder="Optional" />
-                  </div>
-                </div>
-              </TabsContent>
+        <CardFooter>
+          <Button
+            size="lg"
+            className="w-full"
+            onClick={() => switchToView("result")}
+          >
+            <Search className="mr-2 h-4 w-4" /> Search Trains
+          </Button>
+        </CardFooter>
+      </Card>
 
-              <TabsContent value="roundtrip">
-                <div className="py-8 text-center text-muted-foreground">
-                  Round trip selection coming soon.
-                </div>
-              </TabsContent>
-            </Tabs>
-          </CardContent>
-
-          <CardFooter>
-            <Button
-              size="lg"
-              className="w-full"
-              onClick={() => switchToView("result")}
-            >
-              <Search className="mr-2 h-4 w-4" /> Search Trains
-            </Button>
-          </CardFooter>
-        </Card>
-
-        {/* Right Column: Hero Image OR Search Results */}
-        {view === "search" && <HeroImage />}
-        {view === "result" && <TrainResults switchToView={switchToView} />}
-        {view === "seat" && <SeatSelection />}
-      </div>
+      {/* Right Column: Hero Image OR Search Results */}
+      {view === "search" && <HeroImage />}
+      {view === "result" && <TrainResults switchToView={switchToView} />}
+      {view === "seat" && <SeatSelection />}
     </div>
   );
 }

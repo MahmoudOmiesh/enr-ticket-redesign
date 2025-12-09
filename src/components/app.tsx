@@ -2,8 +2,9 @@ import { AppSidebar } from "./app-siderbar";
 import { SidebarInset, SidebarProvider } from "./ui/sidebar";
 import { useState } from "react";
 import { TABS } from "@/lib/tabs";
-import { ChevronDownIcon, LogOutIcon } from "lucide-react";
+import { AlertCircleIcon, ChevronDownIcon, LogOutIcon } from "lucide-react";
 import { Button } from "./ui/button";
+import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 
 export function App() {
   const [activeTab, setActiveTab] = useState<(typeof TABS)[number]["value"]>(
@@ -30,6 +31,15 @@ export function App() {
             </Button>
           </div>
         </header>
+
+        <Alert variant="destructive" className="max-w-2xl self-center my-8">
+          <AlertCircleIcon className="h-4 w-4" />
+          <AlertTitle>Ticket Reservation Policy</AlertTitle>
+          <AlertDescription>
+            Online reservation is currently available for Egyptian nationality
+            only. Ticket prices do not include additional services.
+          </AlertDescription>
+        </Alert>
 
         <main className="flex-1 mb-20">
           <ActiveTab />
