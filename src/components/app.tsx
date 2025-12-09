@@ -31,7 +31,7 @@ export function App() {
           </div>
         </header>
 
-        <main className="flex-1">
+        <main className="flex-1 mb-20">
           <ActiveTab />
         </main>
 
