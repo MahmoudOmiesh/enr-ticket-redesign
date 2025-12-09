@@ -54,7 +54,7 @@ const FAQ_DATA = [
 export function Contact() {
   return (
     <div className="w-full max-w-6xl mx-auto space-y-20">
-      <div className="grid items-start gap-6 grid-cols-2">
+      <div className="grid items-start gap-8 grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl">Contact our support team</CardTitle>

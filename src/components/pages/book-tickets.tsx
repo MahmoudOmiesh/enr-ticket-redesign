@@ -625,41 +625,45 @@ function SeatSelection() {
 
       {/* Seat Class Selection */}
       <div className="grid grid-cols-2 gap-4">
-        <button className="group relative p-5 rounded-2xl border-2 border-primary bg-primary/5 transition-all hover:shadow-lg">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <Armchair className="w-5 h-5 text-primary" />
-              <span className="font-bold text-lg">AC 1</span>
+        <Card className="relative border-primary">
+          <CardContent>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Armchair className="w-5 h-5 text-primary" />
+                <span className="font-bold text-lg">AC 1</span>
+              </div>
+              <Badge variant="secondary" className="text-xs">
+                11 seats
+              </Badge>
             </div>
-            <Badge variant="secondary" className="text-xs">
-              11 seats
-            </Badge>
-          </div>
-          <p className="text-2xl font-bold text-primary">
-            166.00 <span className="text-sm font-normal">EGP</span>
-          </p>
-          <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-            <Check className="w-3 h-3 text-primary-foreground" />
-          </div>
-        </button>
 
-        <button className="group relative p-5 rounded-2xl border-2 border-muted bg-background transition-all hover:border-primary/50 hover:shadow-lg">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <Armchair className="w-5 h-5 text-muted-foreground" />
-              <span className="font-bold text-lg">AC 2</span>
+            <p className="text-2xl font-bold text-primary text-center mt-2">
+              166.00 <span className="text-sm font-normal">EGP</span>
+            </p>
+
+            <div className="absolute top-2 right-2 size-4 rounded-full bg-primary flex items-center justify-center">
+              <Check className="size-3 text-primary-foreground" />
             </div>
-            <Badge variant="outline" className="text-xs">
-              61 seats
-            </Badge>
-          </div>
-          <p className="text-2xl font-bold">
-            131.00{" "}
-            <span className="text-sm font-normal text-muted-foreground">
-              EGP
-            </span>
-          </p>
-        </button>
+          </CardContent>
+        </Card>
+
+        <Card className="relative">
+          <CardContent>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Armchair className="w-5 h-5 text-primary" />
+                <span className="font-bold text-lg">AC 1</span>
+              </div>
+              <Badge variant="secondary" className="text-xs">
+                11 seats
+              </Badge>
+            </div>
+
+            <p className="text-2xl font-bold text-primary text-center mt-2">
+              166.00 <span className="text-sm font-normal">EGP</span>
+            </p>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Selected Seats & Passengers */}
@@ -769,7 +773,7 @@ function SeatSelection() {
         <CardContent>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-xl bg-gray-200 flex items-center justify-center">
                 <ShoppingCart className="w-6 h-6 text-primary" />
               </div>
 
@@ -784,7 +788,7 @@ function SeatSelection() {
               </div>
             </div>
 
-            <Button size="lg" className="gap-2 px-8" disabled>
+            <Button size="lg" className="gap-2 px-8">
               <CreditCard className="w-5 h-5" /> Continue to Payment
               <ChevronRight className="w-4 h-4" />
             </Button>
