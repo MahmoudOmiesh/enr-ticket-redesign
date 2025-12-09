@@ -240,7 +240,7 @@ export function BookTickets() {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 max-w-6xl mx-auto">
       {/* Booking Form Card */}
       <Card className="gap-8 h-fit">
         <CardHeader>

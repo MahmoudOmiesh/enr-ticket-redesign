@@ -43,12 +43,10 @@ const mockComplaints = [
 ];
 export function Complaints() {
   return (
-    <div className="w-full max-w-7xl mx-auto grid grid-cols-[1fr_1.5fr] gap-8">
+    <div className="w-full max-w-6xl mx-auto grid grid-cols-[1fr_1.5fr] gap-8">
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl font-bold tracking-tight">
-            Suggestions & Complaints
-          </CardTitle>
+          <CardTitle className="text-2xl">Suggestions & Complaints</CardTitle>
           <CardDescription>
             We value your feedback. Please fill out the details below.
           </CardDescription>
@@ -89,7 +87,7 @@ export function Complaints() {
       {/* RIGHT COLUMN: The Public Transparency Tracker */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-xl">Your Previous Complaints</CardTitle>
+          <CardTitle className="text-2xl">Your Previous Complaints</CardTitle>
           <CardDescription>
             See the status of your previous complaints and the actions taken by
             ENR.

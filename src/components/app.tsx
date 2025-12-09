@@ -8,7 +8,7 @@ import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 
 export function App() {
   const [activeTab, setActiveTab] = useState<(typeof TABS)[number]["value"]>(
-    TABS[4].value
+    TABS[5].value
   );
 
   const ActiveTab = TABS.find((tab) => tab.value === activeTab)!.component;
