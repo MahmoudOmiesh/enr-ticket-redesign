@@ -54,7 +54,7 @@ const notifications = [
 
 export function Settings() {
   return (
-    <div className="w-full max-w-6xl mx-auto grid grid-cols-[1.5fr_1fr] gap-8">
+    <div className="w-full max-w-6xl mx-auto grid md:grid-cols-[1.5fr_1fr] gap-8">
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Profile settings</CardTitle>
@@ -159,10 +159,12 @@ export function Settings() {
 
         <CardFooter className="gap-2">
           <Button>Save</Button>
-          <Button variant="outline" className="ml-auto">
+          <Button variant="outline" className="ml-auto hidden md:inline-flex">
             Change Password
           </Button>
-          <Button variant="destructive">Delete Account</Button>
+          <Button variant="destructive" className="hidden md:inline-flex">
+            Delete Account
+          </Button>
         </CardFooter>
       </Card>
 

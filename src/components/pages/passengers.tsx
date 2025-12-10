@@ -42,8 +42,11 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export function Passengers() {
+  const isMobile = useIsMobile();
+
   return (
     <div className="w-full max-w-6xl mx-auto">
       <div className="mb-10 flex items-center justify-between">
@@ -56,13 +59,13 @@ export function Passengers() {
               Your Passengers
             </h2>
           </div>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-sm hidden md:block">
             Manage passenger details, nationalities, and profiles.
           </p>
         </div>
 
-        <Button>
-          Add Passenger
+        <Button size={isMobile ? "icon" : "default"}>
+          {isMobile ? null : "Add Passenger"}
           <UserPlusIcon className="size-4" />
         </Button>
       </div>

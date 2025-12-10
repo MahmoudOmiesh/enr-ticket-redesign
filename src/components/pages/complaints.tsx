@@ -43,7 +43,7 @@ const mockComplaints = [
 ];
 export function Complaints() {
   return (
-    <div className="w-full max-w-6xl mx-auto grid grid-cols-[1fr_1.5fr] gap-8">
+    <div className="w-full max-w-6xl mx-auto grid md:grid-cols-[1fr_1.5fr] gap-8">
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Suggestions & Complaints</CardTitle>

@@ -64,7 +64,7 @@ export function Orders() {
             Orders & Tickets
           </h2>
         </div>
-        <p className="text-muted-foreground text-sm">
+        <p className="text-muted-foreground text-sm hidden md:block">
           Manage train bookings, passenger details, and payment statuses.
         </p>
       </div>
@@ -83,11 +83,19 @@ export function Orders() {
             </InputGroupAddon>
           </InputGroup>
 
-          <Button variant="outline" size="sm" className="h-auto">
+          <Button
+            variant="outline"
+            size="sm"
+            className="h-auto hidden md:inline-flex"
+          >
             <Filter className="size-4" />
             Status
           </Button>
-          <Button variant="outline" size="sm" className="h-auto">
+          <Button
+            variant="outline"
+            size="sm"
+            className="h-auto hidden md:inline-flex"
+          >
             <Calendar className="size-4" />
             Date
           </Button>
