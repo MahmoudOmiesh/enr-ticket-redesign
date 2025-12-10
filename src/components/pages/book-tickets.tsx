@@ -390,7 +390,7 @@ function TrainResults({
   return (
     <div className="flex flex-col gap-6">
       {/* Results Header / Filters */}
-      <div className="bg-card border rounded-xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-card border rounded-xl p-4 shadow-sm flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-xl font-semibold">
             Cairo{" "}
@@ -402,11 +402,19 @@ function TrainResults({
           </p>
         </div>
 
-        <div className="flex gap-2">
-          <Button variant="outline" size="sm" className="gap-2">
+        <div className="flex flex-wrap gap-2 w-full sm:w-auto justify-start sm:justify-end">
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-2 w-full sm:w-auto"
+          >
             <Filter className="h-4 w-4" /> Filter
           </Button>
-          <Button variant="outline" size="sm" className="gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-2 w-full sm:w-auto"
+          >
             <ArrowUpDown className="h-4 w-4" /> Sort
           </Button>
         </div>
@@ -419,7 +427,7 @@ function TrainResults({
             <Card key={train.id}>
               <CardContent className="space-y-6">
                 {/* Main Train Info Section */}
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 sm:justify-between sm:items-center">
                   <div className="flex gap-2 items-center">
                     <Badge variant={train.train.badgeVariant}>
                       {train.train.type}
@@ -429,20 +437,23 @@ function TrainResults({
                     </span>
                   </div>
 
-                  <Button onClick={() => switchToView("seat")}>
+                  <Button
+                    className="w-full sm:w-auto"
+                    onClick={() => switchToView("seat")}
+                  >
                     Select Seats <ChevronsRightIcon className="size-4" />
                   </Button>
                 </div>
 
-                <div className="flex items-center justify-between gap-4">
-                  <div className="text-center min-w-[80px]">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="text-center sm:text-left min-w-[80px] w-full sm:w-auto">
                     <div className="text-2xl font-bold">{train.from.time}</div>
                     <div className="text-sm text-muted-foreground">
                       {train.from.station}
                     </div>
                   </div>
 
-                  <div className="flex-1 flex flex-col items-center px-4">
+                  <div className="flex-1 flex flex-col items-center px-4 w-full">
                     <div className="text-xs font-medium text-muted-foreground mb-1 flex items-center gap-1">
                       <Clock className="h-3 w-3" /> {train.trip.duration}
                     </div>
@@ -456,7 +467,7 @@ function TrainResults({
                     </div>
                   </div>
 
-                  <div className="text-center min-w-[80px]">
+                  <div className="text-center sm:text-right min-w-[80px] w-full sm:w-auto">
                     <div className="text-2xl font-bold">{train.to.time}</div>
                     <div className="text-sm text-muted-foreground">
                       {train.to.station}
@@ -495,7 +506,7 @@ function TrainResults({
                 </div>
 
                 {/* Seats Section */}
-                <div className="flex flex-wrap gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {train.seats.map((seat, idx) => {
                     const isSoldOut = seat.available === 0;
                     const isLow = seat.available > 0 && seat.available < 10;
@@ -504,7 +515,7 @@ function TrainResults({
                       <div
                         key={idx}
                         className={cn(
-                          "relative flex-1 min-w-[180px] rounded-xl border-2 p-4 flex items-start justify-between"
+                          "relative min-w-[180px] rounded-xl border-2 p-4 flex items-start justify-between"
                         )}
                       >
                         <div>
@@ -580,8 +591,8 @@ function SeatSelection() {
       {/* Train Summary Card */}
       <Card>
         <CardContent>
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-4">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
               <TrainFront className="w-6 h-6 text-primary" />
             </div>
             <div>
@@ -595,13 +606,13 @@ function SeatSelection() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between gap-4">
-            <div className="text-center min-w-[80px]">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-center sm:text-left min-w-[80px] w-full sm:w-auto">
               <div className="text-2xl font-bold">08:00</div>
               <div className="text-sm text-muted-foreground">Cairo</div>
             </div>
 
-            <div className="flex-1 flex flex-col items-center px-4">
+            <div className="flex-1 flex flex-col items-center px-4 w-full">
               <div className="text-xs font-medium text-muted-foreground mb-1 flex items-center gap-1">
                 <Clock className="h-3 w-3" /> 2h 30m
               </div>
@@ -615,7 +626,7 @@ function SeatSelection() {
               </div>
             </div>
 
-            <div className="text-center min-w-[80px]">
+            <div className="text-center sm:text-right min-w-[80px] w-full sm:w-auto">
               <div className="text-2xl font-bold">10:30</div>
               <div className="text-sm text-muted-foreground">Alexandria</div>
             </div>
@@ -624,7 +635,7 @@ function SeatSelection() {
       </Card>
 
       {/* Seat Class Selection */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Card className="relative border-primary">
           <CardContent>
             <div className="flex items-center justify-between">
@@ -668,9 +679,13 @@ function SeatSelection() {
 
       {/* Selected Seats & Passengers */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <h3 className="text-lg font-semibold">Selected Seats</h3>
-          <Button variant="outline" size="sm" className="gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-2 w-full sm:w-auto"
+          >
             <UserPlus className="w-4 h-4" /> Add Passenger
           </Button>
         </div>
@@ -687,11 +702,11 @@ function SeatSelection() {
               )}
             >
               <CardContent className="p-0">
-                <div className="flex items-center">
+                <div className="flex flex-col sm:flex-row items-stretch">
                   {/* Seat Class Badge */}
                   <div
                     className={cn(
-                      "w-24 flex flex-col items-center justify-center p-4",
+                      "w-full sm:w-24 flex flex-col items-center justify-center p-4",
                       seat.passenger
                         ? "bg-emerald-100 dark:bg-emerald-900/30"
                         : "bg-muted/50"
@@ -705,9 +720,9 @@ function SeatSelection() {
                   </div>
 
                   {/* Passenger Info */}
-                  <div className="flex-1 p-5">
+                  <div className="flex-1 p-5 space-y-4">
                     {seat.passenger ? (
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                         <div className="flex items-center gap-4">
                           <Avatar className="w-12 h-12 border-2 border-emerald-200">
                             <AvatarFallback className="bg-emerald-100 text-emerald-700 font-semibold">
@@ -727,7 +742,7 @@ function SeatSelection() {
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 self-end sm:self-auto">
                           <Button variant="ghost" size="sm">
                             Change
                           </Button>
@@ -741,7 +756,7 @@ function SeatSelection() {
                         </div>
                       </div>
                     ) : (
-                      <div className="flex items-center justify-between h-full">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 h-full">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 rounded-full border-2 border-dashed border-muted-foreground/30 flex items-center justify-center">
                             <User className="w-5 h-5 text-muted-foreground/50" />
@@ -755,7 +770,10 @@ function SeatSelection() {
                             </p>
                           </div>
                         </div>
-                        <Button variant="outline" className="gap-2">
+                        <Button
+                          variant="outline"
+                          className="gap-2 w-full sm:w-auto"
+                        >
                           <UserPlus className="w-4 h-4" /> Select Passenger
                         </Button>
                       </div>
@@ -771,8 +789,8 @@ function SeatSelection() {
       {/* Order Summary & Actions */}
       <Card>
         <CardContent>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3 w-full sm:w-auto">
               <div className="w-12 h-12 rounded-xl bg-gray-200 flex items-center justify-center">
                 <ShoppingCart className="w-6 h-6 text-primary" />
               </div>
@@ -788,7 +806,10 @@ function SeatSelection() {
               </div>
             </div>
 
-            <Button size="lg" className="gap-2 px-8">
+            <Button
+              size="lg"
+              className="gap-2 px-8 w-full sm:w-auto justify-center"
+            >
               <CreditCard className="w-5 h-5" /> Continue to Payment
               <ChevronRight className="w-4 h-4" />
             </Button>
