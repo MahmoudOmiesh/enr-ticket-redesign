@@ -43,11 +43,8 @@ export function App() {
           </div>
         </header>
 
-        <div className="px-4">
-          <Alert
-            variant="destructive"
-            className="max-w-2xl self-center mt-8 mb-12"
-          >
+        <div className="max-w-2xl self-center mt-8 mb-12 px-4">
+          <Alert variant="destructive">
             <AlertCircleIcon className="h-4 w-4" />
             <AlertTitle>Ticket Reservation Policy</AlertTitle>
             <AlertDescription>
